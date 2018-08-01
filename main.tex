@@ -39,9 +39,6 @@
 %\newcommand{\vet}[1]{\mbox{$\boldsymbol{#1}$}}     %negrito de letras minúscuas Gregas
 
 
-
-
-
 % Siglas
 \usepackage{acronym}
 \newacro{PLC}{power line communication}
@@ -82,7 +79,7 @@
 
 \begin{document}
 
-\title{\color{blue}Top-Down Characterization of Low Voltage Electric Power Distribution Networks for Use of PLC Systems}
+\title{Top-Down Characterization of Low Voltage Electric Power Distribution Networks for Use of PLC Systems}
 
 \author{Antonio~A.~M.~Picorone,
         Thiago~R.~Oliveira,  
@@ -119,17 +116,31 @@ When smart grids are considered, \ac{PLC} emerges as a natural choice largely ev
 
 The propagation characteristics of \ac{PLC} signals in indoor low voltage networks are well-known in the literature \cite{Zimmermann2002, Tlich2008, Tlich2008a, Tonello2014}, due mainly to the ease physical access to the networks. On the other hand, although knowledge of medium characteristics is extremely important, papers with a focus on \ac{LV-PDN} are not common in the literature, due mainly to the complexity of conducting measurement campaigns in these environments. In \cite{Liu2000} a measurement campaign was carried out in Germany. In that work, the \ac{ACA}, noise, and \ac{RMS-DS} of the \ac{PLC} outdoor channels (\ac{LV-PDN}) in the 1~MHz up to 30~MHz frequency band were evaluated. The results of a small measurement campaign was presented in \cite{Prasad2001} and aimed to characterize the \ac{LV-PDN} for outdoor \ac{PLC} communication in India. The results reported in \cite{Prasad2001} are also restricted to the frequency band from 1~MHz up to 30~MHz and evaluated the \ac{ACA}, \ac{RMS-DS} and \ac{CB}. For outdoor \ac{PLC} channels, \cite{Liu2000} reported values of 1.4~$\mu$s  considering a single frequency of 3.75~MHz and of 0.8~$\mu$s for the 5~MHz frequency. However, it has not been clearly defined whether these values represent \ac{CIR} duration or the \ac{RMS-DS} value. Values of \ac{RMS-DS} between 0.145~$\mu$s and 0.228~$\mu$s in the frequency range of 1.7~MHz up to 30~MHz were reported by \cite{Prasad2001}.
 
-In general, the behavior of \ac{LV-PDN} when used as a data communication medium is not yet well-known. In order to contribute to mitigate this gap, not suppressed  for previous contributions, this work presents analyzes of the parameters that aid in the \ac{LV-PDN} characterization as a means of data communication for the frequency range between 1.7~MHz and 100~MHz. The
- results and analyzes are supported by a wide measurement campaign carried out in the \ac{LV-PDN} in the city of Juiz de Fora, Brazil, in order to explore the use of communication systems based on outdoor \ac{PLC} technology. The analyzed channel features are \ac{ACA}, \ac{RMS-DS}, \ac{CB}, \ac{CT} and \ac{ADR}.
-The main contributions of the present investigation are summarized as follows:
+In general, the behavior of \ac{LV-PDN} when used as a data communication medium is not yet well-known. In order to contribute to mitigate this gap, this work aims to increase the scientific knowledge about the characteristics of LV-PDV as a means of data communication. Towards this end, the main contributions of this paper are summarized as follows:
 \begin{itemize}
-	\item Some data sets presented (\ac{RMS-DS} and \ac{CB}) were modeled by a statistical distribution in which case several classical continuous distributions are considered;
-	\item Adherence tests were conducted by evaluating the associated log-likelihood values, which is the adopted metric to support the choice of the best statistical distribution that models such channel parameter;
-	\item The average duration of the time window occupied by abrupt \ac{ACA} variation of measured outdoor PLC channels was in the first time estimated. Also a robust linear approach of the \ac{ACA} based on the mean square error criterion was presented;
-	\item A robust approach of the mean measured PLC channel attenuation response based on the mean square error criterion was presented;
-	\item The relationship between ACA and RMS-DS, RMS-DS and CB in outdoor \ac{PLC} channel were modeled by robust linear approach based on the mean square error criterion; 
-	\item A mathematical model, based on performed measurements of the noise \ac{PSD} in the \ac{PLC} outdoor communication medium was proposed and the \ac{ADR} of the outdoor PLC channel in the presence both impulsive and background noise was estimated.
+	\item Results of an extensive measurement campaign conducted in the outdoor Brazilian \ac{LV-PDN} are presented with the objective of helping to characterize these networks as a means of \ac{PLC} communication. The measurement campaign was carried out during 14 days in two distinct districts of the city of Juiz de Fora, MG, Brazil;	 
+	\item Results are presented of numerical analyzes performed on the data obtained from the measurement campaign that help the characterization of \ac{LV-PDN} as a \ac{PLC} communication medium.  The analyzed channel features are \ac{ACA}, \ac{RMS-DS}, \ac{CB}, \ac{CT}, and \ac{ADR};
+	\item The background and impulsive noises observed in the measurement campaign of outdoor Brazilian \ac{LV-PDN} are analyzed and presented. 
 \end{itemize}
+
+
+Based on numerical analyses, we state the following remarks:
+\begin{itemize}
+	\item It was observed and quantified the time window occupied by the abrupt \ac{ACA} variation due to the cyclic switching of charges synchronized with the electric power network. Statistically, \ac{RMS-DS} presents values following, with good approximation, the inverse Gaussian probability distribution; 
+	\item The \ac{CB} presents values following, with good approximation, a inverse Gaussian probability distribution;
+	\item Only in 20\% of the analyzed cases the \ac{CT} was less than, approximately, 2~ms for $\beta = 0.99$ and 5~ms for $\beta = 0.95$. The \ac{CT} was not lower than 1.38~ms and 5.76~ms, for $\beta=0.99$ and $\beta = 0.90$, respectively.
+\end{itemize}
+
+%The results and analyzes are supported by a wide measurement campaign carried out in the \ac{LV-PDN} in the city of Juiz de Fora, Brazil, in order to explore the use of communication systems based on outdoor \ac{PLC} technology. The analyzed channel features are \ac{ACA}, \ac{RMS-DS}, \ac{CB}, \ac{CT} and \ac{ADR}.
+%The main contributions of the present investigation are summarized as follows:
+%\begin{itemize}
+%	\item Some data sets presented (\ac{RMS-DS} and \ac{CB}) were modeled by a statistical distribution in which case several classical continuous distributions are considered;
+%	\item Adherence tests were conducted by evaluating the associated log-likelihood values, which is the adopted metric to support the choice of the best statistical distribution that models such channel parameter;
+%	\item The average duration of the time window occupied by abrupt \ac{ACA} variation of measured outdoor PLC channels was in the first time estimated. Also a robust linear approach of the \ac{ACA} based on the mean square error criterion was presented;
+%	\item A robust approach of the mean measured PLC channel attenuation response based on the mean square error criterion was presented;
+%	\item The relationship between ACA and RMS-DS, RMS-DS and CB in outdoor \ac{PLC} channel were modeled by robust linear approach based on the mean square error criterion; 
+%	\item A mathematical model, based on performed measurements of the noise \ac{PSD} in the \ac{PLC} outdoor communication medium was proposed and the \ac{ADR} of the outdoor PLC channel in the presence both impulsive and background noise was estimated.
+%\end{itemize}
 
 The rest of paper is organized as follows: Section \ref{sec:campaign} the measurement setup and campaign are presented. Section \ref{sec:parameters} parameters used to channel characterize are defined. The results of measurement campaign are presented in the Section \ref{sec-caracteristicas_canal_outdoor}. Finally, the conclusions of this study are presented in Section \ref{sec-conclusao}.
 
@@ -218,7 +229,7 @@ Figs. \ref{Fig:setupTX} and \ref{Fig:setupRX} illustrate the complex task of ins
 \section{Features Definitions}
 \label{sec:parameters}
 
-Let us assume that that the PLC channels are modeled as band imited and frequency selective \ac{WSSUS}. Also, assume that during a certain period of time, the channel impulse response is time-invariant. Therefore, the \ac{CIR} of the \ac{PLC} channel is during this certain time interval is  $ h(t)\in \mathbb{R}|t\in[0,T_h)$,  and its corresponding Fourier transform is $H(f)\in \mathbb{C}||f|<B$, in which $B$ is the frequency bandwidth. Note that $h[n]=h(t)|_{t=nT_s}$, in which $n=0,1.2,\cdots,L_h-1 $ and $T_s$ is the sampling period. The features extracted from the Brazilian PLC channels are described in the following subsections. This assumption is taken into account to define \ac{ACA}, \ac{ACFR}, \ac{RMS-DS}, \ac{CT} and \ac{CB}.
+Let us assume the PLC channels are modeled as band limited and frequency selective \ac{WSSUS}. Also, assume that during a certain period of time, the \ac{CIR} is time-invariant. Therefore, the \ac{CIR} of the \ac{PLC} channel is during this certain time interval is  $ h(t)\in \mathbb{R}|t\in[0,T_h)$,  and its corresponding Fourier transform is $H(f)\in \mathbb{C}||f|<B$, in which $B$ is the frequency bandwidth. Note that $h[n]=h(t)|_{t=nT_s}$, in which $n=0,1.2,\cdots,L_h-1 $ and $T_s$ is the sampling period. The features extracted from the Brazilian PLC channels are described in the following subsections. This assumption is taken into account to define \ac{ACA}, \ac{ACFR}, \ac{RMS-DS}, \ac{CT} and \ac{CB}.
 
 \subsection{Average Channel Attenuation}
 The ACA in dB is expressed by
@@ -271,10 +282,10 @@ where $0<\gamma<1$ is the correlation level informing that the channel frequency
 B_c=\frac{\Delta \omega_{B_c}}{2\pi}f_s.
 \label{eq:CB}
 \end{eqnarray}
-The CB estimates from the measured hybrid PLC-wireless channels are analyzed with respect to the correlation coefficient $\gamma = 0.9$, following the majority of previous contributions in the field~\cite{REF_28}. 
+The CB estimates from the measured PLC channels are analyzed with respect to the correlation coefficient $\gamma = 0.9$. 
 
 \subsection{Coherence Time}
-The coherence time is the time duration in which the channel impulse response of a PLC channel is considered time invariant. Following~\cite{Picorone2014}, the evaluation of the coherence time may be carried out by assuming that the PLC channel is an wide-sense stationary uncorrelated scattering (WSSUS) process. Then, the coherence time of the channel is related to the coherence time of the complex gains of the channel, $\alpha_l(t)$, which incorporate both attenuation and phase deviations due to $l = 1,2,\ldots,L$ multiple reflections of the signal in the communication medium.  
+The coherence time is the time duration in which the channel impulse response of a PLC channel is considered time invariant. Following~\cite{Picorone2014}, the evaluation of the coherence time may be carried out by assuming that the PLC channel is an \ac{WSSUS} process. Then, the coherence time of the channel is related to the coherence time of the complex gains of the channel, $\alpha_l(t)$, which incorporate both attenuation and phase deviations due to $l = 1,2,\ldots,L$ multiple reflections of the signal in the communication medium.  
 
 In its turn, the coherence index between samples of $\alpha_l(t)$, taken $\Delta t$ time units apart, is given by
 \begin{eqnarray}\label{eq-correlindex}
@@ -289,7 +300,7 @@ where $P_l= E[|\alpha_l^2(t)|]$ is the average power of the  $l^{\rm th}$ path. 
 \begin{eqnarray}\label{eq-correlfinal}
 |\rho_h(T_c^{\beta})|\geq \beta,
 \end{eqnarray}
-where $0 <\beta < 1$ refers to the minimum correlation index admitted to characterize the channel as time-invariant during the time interval $\Delta t =T_c^{\beta}$. By adopting an hermitian symmetric orthogonal frequency division multiplexing (HS-OFDM) scheme, which is the version of the orthogonal frequency division multiplexing (OFDM) scheme for baseband data communication \textbf{ [INCLUIR REFERENCIA DO ARTIGO MEU, COLEN E POOR]}, the CT for the correlation index $\beta$, denoted by $T_{c}^{\beta}$, can be estimated by using~\cite{Picorone2014} 
+where $0 <\beta < 1$ refers to the minimum correlation index admitted to characterize the channel as time-invariant during the time interval $\Delta t =T_c^{\beta}$. By adopting an hermitian symmetric orthogonal frequency division multiplexing (HS-OFDM) scheme, which is the version of the orthogonal frequency division multiplexing (OFDM) scheme for baseband data communication \cite{Ribeiro2014a}, the CT for the correlation index $\beta$, denoted by $T_{c}^{\beta}$, can be estimated by using~\cite{Picorone2014} 
 \begin{eqnarray}
 	T_{c}^{\beta} = M_c(2N+L_{cp})T_s,
 \end{eqnarray}
@@ -418,7 +429,7 @@ where $\sigma_{\tau}$ is the RMS-DS in microseconds.
 The \ac{CB} statistics are indicated in Tab.~\ref{Tab:EstatisticasCB}, where it is observed that in 90\% of the analyzed cases  \ac{CB} is higher than 351.24~kHz.
 \begin{table}[!htb]
 \centering
-\caption{Coherence bandwidth statistics for $\varphi = 0.9$ of outdoor PLC channel in kHz.}
+\caption{Coherence bandwidth statistics for $\gamma = 0.9$ of outdoor PLC channel in kHz.}
 \footnotesize 
 \begin{tabular}{c|c|c|c|c|c|c}
 \hline 
@@ -430,7 +441,7 @@ CB                & 247.20  & 629.21 &  430.57 & 75.00   & 351.24       & 542.74
 \newline
 \end{table} 
 
-The empirical CDF of CB is shown in Fig.~\ref{Fig:BC_CDF}, when  $\varphi = 0.9$ is considered. In this case, CB varies from 247.2~kHz up to 629.2~kHz following, with good approximation, a inverse Gaussian probability distribution ($\mu$ = 430.57, $\lambda$ = 14,323.9).  
+The empirical CDF of CB is shown in Fig.~\ref{Fig:BC_CDF}, when  $\gamma = 0.9$ is considered. In this case, CB varies from 247.2~kHz up to 629.2~kHz following, with good approximation, a inverse Gaussian probability distribution ($\mu$ = 430.57, $\lambda$ = 14,323.9).  
 \begin{figure}[!htp]
 \begin{centering}
     \psfrag{X}[Bc]{CB (kHz)}    
@@ -512,7 +523,7 @@ $\beta$    &  Min    & Max    & Mean    & Std     & 90\% above   & 90\% below \\
 \end{table}  
 
 \subsection{Noise}\label{sec-ruido}
-The $n$-th group of measured noises, $\mathbf{v}_n = [v_n[0] \ v_n[1] \ldots v_n[N_v-1]]^T$, is classified as background noise if $|v_n[l]|<V_{\lim}, \forall l$. On the other hand, $\mathbf{v}_n$ is said to be impulsive noise if $\exists l \ | \ |v_n[l]|\geq V_{\lim}$. In this work was adopted $V_{\lim} = 0.05$ V and  $N_v = 3,500.000$ samples. Fig.~\ref{Fig:limiteDeciRuidos} illustrates the two classes of noise adopted to model the noise of \ac{LV-PDN}. In the Figure above the peak value of the noise amplitude did not exceed the decision threshold $V_{\lim}$, so this group of $N_v$ samples is classified as background noise. In the figure below, it is possible to identify that there are samples from the group where their amplitudes exceed the decision threshold, so the group is classified as impulsive noise. 
+In this work, each measured noise group has $N_v=3,500.000$ samples and it is classified as background noise if all of its samples assume values less than $V_{\lim}$. Otherwise, that is, the measured noise group has some sample with an amplitude greater than or equal to $V_{\lim}$, it receives the classification of impulsive noise. Fig.~\ref{Fig:limiteDeciRuidos} illustrates the two classes of noise adopted to model the noise of \ac{LV-PDN} when $V_{\lim}=0.05$~V. In the Figure above the peak value of the noise amplitude did not exceed the decision threshold $V_{\lim}$, so this group of $N_v$ samples is classified as background noise. In the figure below, it is possible to identify that there are samples from the group where their amplitudes exceed the decision threshold, so the group is classified as impulsive noise. 
 \begin{figure} [!htb]
     \begin{minipage}[b]{\linewidth}
     \psfrag{X}[Bc]{Samples}    
@@ -608,7 +619,7 @@ CT$^{*2}$ [ms]       & 2.07   & $>$16.3  & 6.55     & 3.83    & 2.49          & 
 \end{tabular} \label{Tab:Estatisticas}
 \newline
 \begin{tabular}{ccccc}
-Note 1: $\varphi = 0.9$ &  &Note 2: $\beta=0.98$ & & \\  
+Note 1: $\gamma = 0.9$ &  &Note 2: $\beta=0.98$ & & \\  
 \end{tabular}
 \end{table*}
 
@@ -620,26 +631,9 @@ Concerning the calculation of the coherence band and coherence time, it has been
 
 Statistical models that represent the RMS-DS and CB of the measured channels were presented. Also, the temporal window statistic and average gain variation that occur due to periodic cyclic variations in the frequency response of the \ac{PLC} channel was discussed at the first time.
 
-The PLC signal average attenuation when propagating on the Brazilian \ac{LV-PDN} was estimated at 0.4 dB/m and 0.4 dB/MHz. .
-
 Mathematical models, based on only two parameters, representing the background and impulsive noises present in \ac{LV-PDN} have been proposed.
 
 Finally, the achievable data rate of the outdoor PLC channel in the presence both impulsive and background noise was estimated.
-
-Some of our main conclusions are summarized as follows:
-\begin{itemize}
-	\item The \ac{ACA} increases as the channel length increases, with a linear ratio of 0.4~dB/m for the measured Brazilian outdoor PLC channels;
-	\item The average duration of the time window occupied by the abrupt \ac{ACA} variation of measured outdoor PLC channels is about 0.98~ms, since the observed values ranged from 0.73~ms up to 1.40~ms;
-	\item The mean value of the magnitude response of outdoor PLC channels exhibit a decay rate of, approximately, 0.4~dB/MHz; 
-	\item The \ac{RMS-DS} presents values between 129.7~$\mu$s and 301.6~$\mu$s following, with good approximation, the inverse Gaussian probability distribution; 
-	\item The \ac{RMS-DS} was smaller than $0.22$~ms in 90\% of the analyzed cases;
-	\item The \ac{CB} varies from 247.2~kHz up to 629.2~kHz following, with good approximation, a inverse Gaussian probability distribution;
-	\item The \ac{CB} is higher than 351.24~kHz in 90\% of the analyzed cases when  $\varphi = 0.9$ is considered;
-	\item The relationship between \ac{RMS-DS} and \ac{CB} in outdoor \ac{PLC} channel can be modeled by a hyperbolic curve;
-	\item Only in 20\% of the analyzed cases the \ac{CT} was less than, approximately, 2~ms for $\beta = 0.99$ and 5~ms for $\beta = 0.95$; 
-	\item The \ac{CT} was not lower than 1.38~ms and 5.76~ms, for $\beta=0.99$ and $\beta = 0.90$, respectively.
-\end{itemize}
-
 \section*{Acknowledgment}
 
 The authors would like to thank, FINEP, FAPEMIG, CNPq, CAPES, P\&D
