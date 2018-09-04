@@ -41,14 +41,6 @@ M.~Masera, E.~F. Bompard, F.~Profumo, and N.~Hadjsaid, ``Smart (electricity)
   grids for smart cities: Assessing roles and societal impacts,''
   \emph{Proceedings of the IEEE}, vol. 106, no.~4, pp. 613--625, April 2018.
 
-\bibitem{Atzori2010}
-\BIBentryALTinterwordspacing
-L.~Atzori, A.~Iera, and G.~Morabito, ``The internet of things: A survey,''
-  \emph{Computer Networks}, vol.~54, no.~15, pp. 2787 -- 2805, 2010. [Online].
-  Available:
-  \url{http://www.sciencedirect.com/science/article/pii/S1389128610001568}
-\BIBentrySTDinterwordspacing
-
 \bibitem{Mehmood2017}
 Y.~Mehmood, F.~Ahmad, I.~Yaqoob, A.~Adnane, M.~Imran, and S.~Guizani,
   ``Internet-of-things-based smart cities: Recent advances and challenges,''
@@ -106,9 +98,24 @@ A.~Musolino, M.~Raugi, and M.~Tucci, ``{Cyclic short-time varying channel
 M.~Zimmermann and K.~Dostert, ``An analysis of the broadband noise scenario in
   power-line networks,'' in \emph{{IEEE ISPLC}}, 2000.
 
-\bibitem{Zimmermann2002}
-------, ``{A multipath model for the powerline channel},'' \emph{{IEEE Trans.
-  Commun.}}, vol.~50, no.~4, pp. 553--559, 2002.
+\bibitem{Anatory2009}
+J.~Anatory, N.~Theethayi, and R.~Thottappillil, ``Channel characterization for
+  indoor power-line networks,'' \emph{{IEEE Trans. Power Del.}}, vol.~24,
+  no.~4, pp. 1883--1888, 2009.
+
+\bibitem{Tonello2014}
+A.~Tonello, F.~Versolatto, and A.~Pittolo, ``In-home power line communication
+  channel: Statistical characterization,'' \emph{IEEE Transactions on
+  Communications}, vol.~62, no.~6, pp. 2096--2106, Jun. 2014.
+
+\bibitem{Liu1999}
+D.~Liu, E.~Flint, B.~Gaucher, and Y.~Kwark, ``Wide band ac power line
+  characterization,'' \emph{IEEE Transactions on Consumer Electronics},
+  vol.~45, no.~4, pp. 1087--1097, Nov. 1999.
+
+\bibitem{O'Mahony2006}
+B.~O'Mahony, ``Field testing of high-speed power line communications in north
+  american homes,'' in \emph{{IEEE ISPLC}}, 2006, pp. 155 --159.
 
 \bibitem{Tlich2008}
 M.~Tlich, A.~Zeddam, F.~Moulin, and F.~Gauthier, ``Indoor power-line
@@ -121,20 +128,20 @@ M.~Tlich, A.~Zeddam, F.~Moulin, and F.~Gauthier, ``Indoor power-line
   {MHz}; part ii: Time-frequency analysis,'' \emph{{IEEE Trans. Power Del.}},
   vol.~23, no.~3, pp. 1402 --1409, Jul. 2008.
 
-\bibitem{Tonello2014}
-A.~Tonello, F.~Versolatto, and A.~Pittolo, ``In-home power line communication
-  channel: Statistical characterization,'' \emph{IEEE Transactions on
-  Communications}, vol.~62, no.~6, pp. 2096--2106, Jun. 2014.
-
-\bibitem{Liu2000}
-W.~Liu, H.-P. Widmer, J.~Aldis, and T.~Kaltenschnee, ``Nature of power line
-  medium and design aspects for broadband plc system,'' in \emph{International
-  Zurich Seminar on Broadband Communications}, 2000, pp. 185--189.
+\bibitem{Schneider2012}
+D.~Schneider, A.~Schwager, W.~Baschlin, and P.~Pagani, ``European mimo plc
+  field measurements: Channel analysis,'' in \emph{IEEE International Symposium
+  on Power Line Communications and Its Applications}, Mar. 2012, pp. 304--309.
 
 \bibitem{Prasad2001}
 T.~Prasad, S.~Srikanth, C.~Krishnan, and P.~Ramakrishna, ``Wideband
   characterization of low voltage outdoor powerline communication channels in
   india,'' in \emph{{ISPLC}}, 2001.
+
+\bibitem{Zhai2011}
+M.-Y. Zhai, ``Transmission characteristics of low-voltage distribution networks
+  in {China} under the smart grids environment,'' \emph{{IEEE Trans. Power
+  Del.}}, vol.~26, no.~1, pp. 173 --180, Jan. 2011.
 
 \bibitem{SilvaCosta2017}
 L.~G. da~Silva~Costa, A.~C.~M. de~Queiroz, B.~Adebisi, V.~L.~R. da~Costa, and
