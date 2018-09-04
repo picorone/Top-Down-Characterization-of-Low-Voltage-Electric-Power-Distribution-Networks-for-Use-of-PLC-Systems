@@ -22,24 +22,13 @@
 \usepackage{enumerate}
 \usepackage{psfrag}
 \usepackage{graphicx,color}               %para habilitar letras coloridas
-%Cria um comando para alerta de necessidade de revisão
+%Cria um comando para alerta de necessidade de revisÃ£o
 \newenvironment{rev}[1]{\textcolor{red}{\bf(REVISAR)} \textcolor{blue}{\bf #1}}
 
-% *****  Definição da lista de Símbolos  *****
+% *****  DefiniÃ§Ã£o da lista de SÃ­mbolos  *****
 \renewcommand{\Re}{\mathrm{Re}}                    %"parte real"
-\renewcommand{\Im}{\mathrm{Im}}                    %"parte imaginária"
+\renewcommand{\Im}{\mathrm{Im}}                    %"parte imaginÃ¡ria"
 \renewcommand{\emptyset}{\mbox{\large{\o}}}        %"conjunto vazio"
-
-%\newcommand{\diag}{\mathrm{diag}}                  %diag{}
-%\newcommand{\W}{\mbox{\bf $\mathcal{W}$}}          %variável do equalizador
-%\newcommand{\HH}{\mbox{\bf $\mathcal{H}$}}         %matriz de convolução do canal
-%\newcommand{\btil}[1]{\mathbf{\widetilde{#1}}}     %variável de matriz
-%\newcommand{\bhat}[1]{\mathbf{\widehat{#1}}}       %variável de matriz
-%\newcommand{\F}{\mbox{\bf $\mathcal{F}$}}          %matriz de Fourier
-%\newcommand{\vet}[1]{\mbox{$\boldsymbol{#1}$}}     %negrito de letras minúscuas Gregas
-
-
-
 
 
 % Siglas
@@ -72,6 +61,7 @@
 \newacro{CDF}{cumulative distribution function}
 \newacro{PSD}{power spectral densities}
 \newacro{ADR}{achievable data rate}
+\newacro{IoT}{Internet of Things}
 
 \newcommand{\tamfig}{3.5in}    %\newcommand{\LARGURA}{12cm}         %largura das figuras Matlab
 
@@ -82,7 +72,7 @@
 
 \begin{document}
 
-\title{\color{blue}Top-Down Characterization of Low Voltage Electric Power Distribution Networks for Use of PLC Systems}
+\title{Channel Characterization of Low Voltage Electric Power Distribution Networks for PLC Applications}
 
 \author{Antonio~A.~M.~Picorone,
         Thiago~R.~Oliveira,  
@@ -103,7 +93,10 @@ Federal University of Juiz de Fora (UFJF), and Smarti9 Ltda, Brazil.}% <-this % 
 \maketitle
 
 \begin{abstract}
-This paper presents unprecedented results of a comprehensive measurement campaign based on sounding approach with the aim of characterizing and modeling the outdoor Brazilian as a means of data communication. Average channel attenuation, root-mean-square delay spread, coherence time, coherence bandwidth and achievable data rate are analyzed in the frequency band from 1.7 MHz up to 100 MHz. Statistical models for some channel features are proposed. The cyclically periodic variation of the channel is quantified and presented as a temporal function of the average channel attenuation variation. Also, mathematical models based on only two parameters representing both the background and impulsive noises are proposed. The parameters analyzed in this contribution can help the characterization of outdoor Brazilian power line channels, since increase the knowledge about such communication media, contributing to the design of increasingly robust and efficient PLC systems.
+This paper presents the unprecedented results of a comprehensive measurement campaign based on sounding approach with the aim of characterizing and modeling the outdoor Brazilian power lines channels as a means of data communication. The statistical characteristics of average channel attenuation, root-mean-square delay spread, coherence time, coherence bandwidth and achievable data rate are analyzed in the frequency band from 1.7 MHz up to 100 MHz, and  thereof  statistical models for some channel features are proposed. 
+The cyclical periodic variation of the channel is quantified and presented as a temporal function of the average channel attenuation variation. 
+Also, mathematical models based on only two parameters representing both the background and impulsive noises are proposed. 
+The parameters analysis presented in this contribution helps the characterization of outdoor Brazilian power line channels as it increases the knowledge about the communication media, and increasingly assists the robustness and efficiency of \ac{PLC} systems design.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -113,44 +106,75 @@ power line communication, channel estimation, statistical modeling, channel feat
 %\IEEEpeerreviewmaketitle
 
 \section{Introduction}\label{sec:intro}
-\IEEEPARstart{T}{he} development of data communication systems capable of interconnecting the most diverse electro-electronic devices has motivated many researchers lately. Smart cities \cite{Andrisano2018}, smart buildings \cite{Minoli2017} and smart grids \cite{Masera2018} are examples that can only be realized through a communication network that integrates existing technologies in homes, in vehicles, in commerce, in the electric power network, etc. Furthermore, much of this integration has been discussed within concept of Internet of Things (IoT) \cite{Atzori2010}. On the other hand, nowadays there is no single technology that meets all requirements necessary for the interconnection of the present devices, given the diversity and complexity of the environments to be integrated. Consequently, there are combinations of a wide variety of communication systems that are used for this purpose \cite{Mehmood2017, M.B.A.Dib2018}.
+\IEEEPARstart{T}{he} needs and demands for connectivity among devices and machines have been putting a huge research efforts for introducing novel generations of telecommunications systems that are suitable for assisting  
+Smart City \cite{Andrisano2018}, the \ac{IoT} \cite{Minoli2017}, Smart Grid \cite{Masera2018} and Industry $4.0$ \cite{Wollschlaeger2017} applications. As a matter of fact, these applications can only succeed being assisted by ubiquitous, pervasive, energy efficient and sustainable telecommunication infrastructures  which can, eventually, integrate the existing telecommunication technologies in homes, vehicles, buildings, among other  facilities. 
 
-When smart grids are considered, \ac{PLC} emerges as a natural choice largely evaluated in the literature \cite{Yan2013, Han2017, Artale2018}. One of the great motivations of the use of this technology lies in the infrastructure that has already been installed and its great potential for network convergence \cite{Willie2006,M.B.A.Dib2018,Oliveira2017}. Though \ac{PLC} is potentially convenient for low-cost data transmission for measurement and control of electricity supply, water and gas consumption, and in industries, the electric power grids constitute a challenging medium for data communication since they were not designed for this purpose \cite{Corripio2006,Musolino2008,Zimmermann2000}. In order to design an efficient communication system, regardless the type of system, the knowledge of the effects that a communication signal is subjected through its propagation in the communication medium is mandatory. This effects are usually evaluated as a function of some channel parameters, such as \ac{ACA}, \ac{RMS-DS}, \ac{CB}, and \ac{CT}.    
+Currently, it is well-established that there is no single telecommunication technology that meets all requirements necessary for interconnecting the existing devices and machines because the number, diversity and complexity of devices and machine are remarkable. Therefore, the implementation of a wide variety of telecommunication systems capable of maximizing the use of the available resource becomes mandatory \cite{Mehmood2017, M.B.A.Dib2018}.
 
-The propagation characteristics of \ac{PLC} signals in indoor low voltage networks are well-known in the literature \cite{Zimmermann2002, Tlich2008, Tlich2008a, Tonello2014}, due mainly to the ease physical access to the networks. On the other hand, although knowledge of medium characteristics is extremely important, papers with a focus on \ac{LV-PDN} are not common in the literature, due mainly to the complexity of conducting measurement campaigns in these environments. In \cite{Liu2000} a measurement campaign was carried out in Germany. In that work, the \ac{ACA}, noise, and \ac{RMS-DS} of the \ac{PLC} outdoor channels (\ac{LV-PDN}) in the 1~MHz up to 30~MHz frequency band were evaluated. The results of a small measurement campaign was presented in \cite{Prasad2001} and aimed to characterize the \ac{LV-PDN} for outdoor \ac{PLC} communication in India. The results reported in \cite{Prasad2001} are also restricted to the frequency band from 1~MHz up to 30~MHz and evaluated the \ac{ACA}, \ac{RMS-DS} and \ac{CB}. For outdoor \ac{PLC} channels, \cite{Liu2000} reported values of 1.4~$\mu$s  considering a single frequency of 3.75~MHz and of 0.8~$\mu$s for the 5~MHz frequency. However, it has not been clearly defined whether these values represent \ac{CIR} duration or the \ac{RMS-DS} value. Values of \ac{RMS-DS} between 0.145~$\mu$s and 0.228~$\mu$s in the frequency range of 1.7~MHz up to 30~MHz were reported by \cite{Prasad2001}.
+In the realm of the aforementioned applications, \ac{PLC} emerges as a natural option extensively  evaluated in the literature \cite{Yan2013, Han2017, Artale2018}. 
+One of the great motivations behind  \ac{PLC} systems lies in the low-cost associated with its deployment, as well the great potential for network convergence  \cite{Willie2006,M.B.A.Dib2018,Oliveira2017}. 
+Furthermore, \ac{PLC} systems can be easily adapted for  measuring, monitoring and controlling electricity, water and gas supply and consumption.
+On the other hand, it is recognized that electric power systems constitute a challenging medium for data communication purposes because they were designed for energy transmission and distribution \cite{Corripio2006,Musolino2008,Zimmermann2000}. 
 
-In general, the behavior of \ac{LV-PDN} when used as a data communication medium is not yet well-known. In order to contribute to mitigate this gap, not suppressed  for previous contributions, this work presents analyzes of the parameters that aid in the \ac{LV-PDN} characterization as a means of data communication for the frequency range between 1.7~MHz and 100~MHz. The
- results and analyzes are supported by a wide measurement campaign carried out in the \ac{LV-PDN} in the city of Juiz de Fora, Brazil, in order to explore the use of communication systems based on outdoor \ac{PLC} technology. The analyzed channel features are \ac{ACA}, \ac{RMS-DS}, \ac{CB}, \ac{CT} and \ac{ADR}.
-The main contributions of the present investigation are summarized as follows:
+Several contributions have addressed measurement and characterization of electric power systems for data communication considering both narrowband ($0-500$ kHz) \cite{Liu2011,Gassara2014} and broadband ($1.7-100$ MHz) \cite{Anatory2009, Tonello2014}. Note that broadband and narrowband in \ac{PLC} field follow the definition stated in \cite{Oliveira2018}. 
+
+Indoor \ac{PLC} channel measurement campaigns were conducted in US residences \cite{Liu1999, O'Mahony2006} besides other countries, such as France \cite{Tlich2008,Tlich2008a,Schneider2012}, Italy ~\cite{Tonello2014}, Germany, Spain, Belgium, United Kingdom~\cite{Schneider2012}, and Brazil \cite{Oliveira2017}, and references therein. Focusing on the outdoor \ac{PLC} environment, some few contributions related to developed countries deserve attention. For instance, an outdoor \ac{PLC} channel measurement campaign was carried out in Germany to evaluate the \ac{ACA}, channel dispersion in the time-domain and to analyze the additive noise. In \cite{Prasad2001}, results of a modest measurement campaign report a tentative to characterize the Indian low-voltage and outdoor electric power grids by analyzing  \ac{ACA}, delay spread and \ac{CB}. In China, the \ac{ACA} of outdoor \ac{PLC} channels was evaluated in the frequency band from $2$ to $20$~MHz~\cite{Zhai2011}.\color{black}
+
+\color{red} In general, the behavior of \ac{LV-PDN} as a data communication medium is not yet well-known because a large number and representative measurement campaign carried around the world is missing. As a matter of fact, the worldwide measurement campaign can provide the necessary information for correctly characterizing such time-varying channel, which is, with more emphasis, defined as periodically stochastic system. The lack of such information are associated with the necessity and cost associated with the mobilization specialized electrician teams, the use of special vehicles, the use of robust measuring instruments, and the adoption of safety training for all those involved with the field measurements. In Brazil, electric power utilities require safety training in works with electricity \cite{NR10} and works at height \cite{NR35} for all people involved. 
+
+AQUI ESTÁ FALTANDO VC DEIXAR CLARO QUAL É PROBLEMA QUE VC ESTÁ INVESTIGANDO? POR EXEMPLO, O QUE VC NÃO ENCONTROU NOS ARTIGOS SUPRACITADOS E É IMPORTANTE DE SER INVESTIGADO. A COMPLEXIDADE DA MEDICAO NAO E JUSTIFICATIVA SUFICIENTE, MAS A FALTA DE INFORMACOES SOBRE TEMPO DE COERENCIA, BANDA DE COERENCIA, DELAY SPREAD, MODELOS DE RUIDO E ANALISE DE CAPACIDADE SAO PRECISA CARECEM DE ANALISES E DISCUSSÕES.
+
+In this regards, this paper aims to increase the knowledge \ac{LV-PDN} as a means of data communication. Towards this end, the main contributions of this paper are summarized as follows:\color{black}
 \begin{itemize}
-	\item Some data sets presented (\ac{RMS-DS} and \ac{CB}) were modeled by a statistical distribution in which case several classical continuous distributions are considered;
-	\item Adherence tests were conducted by evaluating the associated log-likelihood values, which is the adopted metric to support the choice of the best statistical distribution that models such channel parameter;
-	\item The average duration of the time window occupied by abrupt \ac{ACA} variation of measured outdoor PLC channels was in the first time estimated. Also a robust linear approach of the \ac{ACA} based on the mean square error criterion was presented;
-	\item A robust approach of the mean measured PLC channel attenuation response based on the mean square error criterion was presented;
-	\item The relationship between ACA and RMS-DS, RMS-DS and CB in outdoor \ac{PLC} channel were modeled by robust linear approach based on the mean square error criterion; 
-	\item A mathematical model, based on performed measurements of the noise \ac{PSD} in the \ac{PLC} outdoor communication medium was proposed and the \ac{ADR} of the outdoor PLC channel in the presence both impulsive and background noise was estimated.
+	\item The discussion of an extensive measurement campaign conducted on the Brazilian outdoor \ac{LV-PDN} covering the frequency band between $1.7$ and $100$~MHz. The measurement campaign covers urban area in the city of Juiz de Fora, Minas Gerais state, Brazil.	
+	%The measurement campaign was carried out during \color{blue} fourteen \color{black} days in two distinct \color{blue} quarters \color{black} of the city of Juiz de Fora, MG, Brazil;	 
+	\item The characterization of Brazilian outdoor \ac{PLC} channels through the use of \ac{ACA}, \ac{RMS-DS}, \ac{CB} and \ac{CT} features. Also, the calculation of achievable data rates of these \ac{PLC} channels.
+	\item The analysis and modeling of the power spectral density of the additive noise found in the Brazilian outdoor \ac{LV-PDN}. 
 \end{itemize}
 
-The rest of paper is organized as follows: Section \ref{sec:campaign} the measurement setup and campaign are presented. Section \ref{sec:parameters} parameters used to channel characterize are defined. The results of measurement campaign are presented in the Section \ref{sec-caracteristicas_canal_outdoor}. Finally, the conclusions of this study are presented in Section \ref{sec-conclusao}.
+Based on the numerical analyses, we state the following remarks:
+
+\textbf{PICORONE: HERE YOU NEED TO EMPHASIZE WHAT IS THE GAIN REGARDING THE THREE AFOREMENTIONED CONTRIBUTIONS IN COMPARISON WITH THE PREVIOUS WORKS. THE COMPARISON IS NECESSARY BECAUSE IT IS NOT A FUNDAMENTAL CONTRIBUTION. SEE PAPERS OF THIAGO OLIVEIRA RELATED TO INHOME PLC CHANNELS. BEARING YOUR MIND WITH THIS DISCUSSION, PLEASE IMPROVE THE DESCRIPTION OF YOUR FINDINGS.}
+
+\begin{itemize}
+
+	\item It was observed and quantified the time window occupied by the abrupt \ac{ACA} variation due to the cyclic switching of charges synchronized with the electric power network. 
+	Statistically, \color{blue} with a good approximation, \ac{RMS-DS} observed values follow the inverse Gaussian probability distribution; \color{black} 
+	\item Only in 20\% of the analyzed cases the \ac{CT} \color{blue} were \color{black} less than, approximately, 2~ms for $\beta = 0.99$ and 5~ms for $\beta = 0.95$. 
+	The \ac{CT} was not lower than 1.38~ms and 5.76~ms, for $\beta=0.99$ and $\beta = 0.90$, respectively.
+\end{itemize}
+
+%The results and analyzes are supported by a wide measurement campaign carried out in the \ac{LV-PDN} in the city of Juiz de Fora, Brazil, in order to explore the use of communication systems based on outdoor \ac{PLC} technology. The analyzed channel features are \ac{ACA}, \ac{RMS-DS}, \ac{CB}, \ac{CT} and \ac{ADR}.
+%The main contributions of the present investigation are summarized as follows:
+%\begin{itemize}
+%	\item Some data sets presented (\ac{RMS-DS} and \ac{CB}) were modeled by a statistical distribution in which case several classical continuous distributions are considered;
+%	\item Adherence tests were conducted by evaluating the associated log-likelihood values, which is the adopted metric to support the choice of the best statistical distribution that models such channel parameter;
+%	\item The average duration of the time window occupied by abrupt \ac{ACA} variation of measured outdoor PLC channels was in the first time estimated. Also a robust linear approach of the \ac{ACA} based on the mean square error criterion was presented;
+%	\item A robust approach of the mean measured PLC channel attenuation response based on the mean square error criterion was presented;
+%	\item The relationship between ACA and RMS-DS, RMS-DS and CB in outdoor \ac{PLC} channel were modeled by robust linear approach based on the mean square error criterion; 
+%	\item A mathematical model, based on performed measurements of the noise \ac{PSD} in the \ac{PLC} outdoor communication medium was proposed and the \ac{ADR} of the outdoor PLC channel in the presence both impulsive and background noise was estimated.
+%\end{itemize}
+
+The rest of paper is organized as follows: Section \ref{sec:campaign} \color{blue} details \color{black} the measurement setup and the measurement campaign. \color{black} 
+Section \ref{sec:parameters} \color{blue} describes the well-established features  used to characterize the \ac{PLC} channels. \color{black}.
+Numerical results and analyses associated with the data set provided by the measurement campaign are covered in  Section \ref{sec-caracteristicas_canal_outdoor}. 
+Finally, the concluding remarks are stated in Section \ref{sec-conclusao}.
 
 \section{Measurement Setup and Campaign}
 \label{sec:campaign}
+\color{blue} This section succinctly discusses the measurement setup, which was designed to carry out the measurement campaign, and details the measurement campaign carried out to estimate \ac{CFR} of \ac{PLC} channels and the additive noises associated with typical Brazilian outdoor \ac{LV-PDN} in the city of Juiz de Fora.\color{black}
 
-The statistical characterization and modeling of the features associated with Brazilian outdoor PLC channels were supported by estimates of \ac{CFR}. The data used to estimate the CFR were produced by a set of measurement equipment during a measurement campaign in the city of Juiz de Fora, MG, Brazil, as discussed bellow.
-
-\subsection{Measurement Setup}
-
-The block diagram of the adopted measurement setup applied in order to estimate the \ac{CFR} is depicted in Fig.~\ref{fig:setup} and consists of three main components:
+\subsection{The Measurement Setup}
+\color{blue} Fig.~\ref{fig:setup} illustrates the block diagram of the designed measurement setup applied for estimating \ac{CFR} and measuring additive noise. Essentially, it is constituted by the following three main components: \color{black}
 \begin{enumerate}[(i)]
-\item Signal generator: Device composed of an arbitrary signal generator board mounted in a rugged computer.
-A pre-designed sounding sequence is loaded into it and converted to an analog signal to be submitted to the electric power grid under analysis;
-\item Data digitizer: Acts as a receiver, measuring the transmitted sounding signal after propagating through the electric power grid,
-and converts it into a digital representation for the subsequent analyzes that will be carried out through digital signal processing-based techniques;
-\item Coupler: Circuitry applied to connect both the signal generator and data digitizer to the electric power grid under analysis.
-The coupler is essentially composed of an analog high pass filter, blocking the main voltage signal ($60$~Hz in Brazil) that can damage the other equipments \cite{SilvaCosta2017}. Insertion loss lower than 2~dB in the frequency band between 1.7~MHz up to 100~MHz is introduced by adopted coupler.
+\item \color{blue} {\bf TX Equipment:} \color{black} It is composed of an arbitrary signal generator board mounted into a rugged personal computer and \ac{PLC} coupling device. A pre-designed sounding sequence, which is composed of a sequence of \ac{HS-OFDM} symbols, is loaded into \color{blue} the signal generator board and its continuous time (analog) version is injected into the electric power grids through a \ac{PLC} coupling device.
+\item \color{blue} {\bf Rx Equipment:}\color{black} It acquires the received signal at the monitoring point of contact with the electric power grids with \ac{PLC} coupling device followed by the data digitizer. If the TX Equipment is ON, meaning that the sounding signal is being transmitted, then estimates of \ac{CFR} are obtained from the acquired signal, otherwise the additive noise is obtained from the acquires signal.
+\item \color{blue} {\bf \ac{PLC} Coupling Device:} It is a necessary coupling circuit for safety connection of both signal generator and data digitizer to the electric power grid. Basically, a \ac{PLC} coupling device is composed of an analog high-pass filter for dealing with the mains signal, electric protection circuit, galvanic isolation and an analog low-pass filter for fulfilling the Sampling Theorem \cite{SilvaCosta2017}. 
+Insertion loss lower than 2~dB in the frequency band between $1.7$~MHz and $100$~MHz was observed in the designed capacitive \ac{PLC} coupling device.
 \end{enumerate}
 
-The set of equipment and algorithms used to inject the test signal into the \ac{LV-PDN} is called Setup TX. On the other hand, the set of equipment and algorithms used to sample and estimate the \ac{LV-PDN} \ac{CFR} is denominated Setup RX.
+The set of equipment and algorithms used to inject the test signal \color{red}(is it the same as sounding signal? )\color{black} into the \ac{LV-PDN} is called \color{blue} ``Setup TX''\color{black}. 
+On the other hand, the set of equipment and algorithms used to sample and estimate the \ac{LV-PDN} \ac{CFR} is called \color{blue} ``Setup RX''\color{black}.
 
 \begin{figure}[htb]
 \begin{centering}
@@ -160,11 +184,21 @@ The set of equipment and algorithms used to inject the test signal into the \ac{
 \end{centering}
 \end{figure}
 
-The \ac{CFR} estimates were obtained through the estimation methodology described in~\cite{Oliveira2014}, which is based on a sounding approach \cite{Parsons1991}. The set of adopted parameters in the estimation methodology is summarized in Tab.~\ref{tab:setup_parameters}.
-Essentially, the transmitted signal is composed of \ac{HS-OFDM} symbols \cite{Ribeiro2014a}. By adopting  $200$~MHz sampling frequency, the frequency resolution is around $48.83$~kHz and each \ac{CFR} estimate is obtained every $23.04~\mu$s, approximately -- for more details see~\cite{Oliveira2013a}. 
+The \ac{CFR} \color{blue} estimations \color{black} are obtained through the  methodology described in~\cite{Oliveira2014}, which is based on a sounding approach \cite{Parsons1991}. 
+The set of adopted parameters in the estimation methodology is summarized in TABLE~\ref{tab:setup_parameters}.
+Essentially, the transmitted signal is composed of \ac{HS-OFDM} symbols \cite{Ribeiro2014a}. 
+By adopting  $200$~MHz sampling frequency, the frequency resolution is around $48.83$~kHz and each \ac{CFR} estimate is obtained every $23.04~\mu$s, approximately -- for more details see~\cite{Oliveira2013a}. 
 
 \subsection{Measurement Campaign}
-For the analysis of the features of the outdoor PLC channel, 33 cycles of the \ac{LV-PDN} fundamental frequency (60~Hz in Brazil) were considered at distinct points in a low-income neighborhood of the city of Juiz de Fora, MG, Brazil. The distance between the couplers ranged from 3~m up to 100~m, with mean values of 15~m, 50~m and 85~m. In each cycle of the \ac{LV-PDN} (16.67~ms), approximately 723 PLC channel frequency responses were collected with a length of 4,096 samples per CFR, in addition to the cyclic prefix of size equal to 512. With this, 23,919 CFR measurements of outdoor PLC channels were evaluated in total.
+
+ We have evaluated and presented the statistical characterization and features associated with Brazilian outdoor PLC channels by the \ac{CFR} estimations. \color{black}
+The data used to estimate the CFR were produced by a set of measurement equipment during a \color{blue} measuring campaign \color{black} in the city of Juiz de Fora, MG, Brazil, as discussed \color{blue} below.
+
+
+For the analysis of the features of the outdoor PLC channel, 33 cycles of the \ac{LV-PDN} fundamental frequency (60~Hz in Brazil) were considered in a low-income neighborhood of the city of Juiz de Fora, MG, Brazil. 
+The distance between the couplers ranged from 3~m up to 100~m, with mean values of 15~m, 50~m and 85~m. 
+In each cycle of the \ac{LV-PDN} (16.67~ms), approximately 723 PLC channel frequency responses were collected with a length of 4,096 samples per CFR, in addition to the cyclic prefix of size equal to 512. 
+With this, 23,919 CFR measurements of outdoor PLC channels were \color{blue} obtained \color{black} in total.
 
 The measurement of the noise in the outdoor PLC channel was performed according to \cite{Andrade2013}, in which groups of 3,500,000 successive samples of voltage in the time domain of the signal on the \ac{LV-PDN} were obtained in the absence of signal emitted by the signal generator. Each sample group corresponds to approximately 17.5~ms. This time was chosen based on the memory capacity of the data acquisition board when set to a sampling rate of 200~Msps. These samples were acquired in one of the three phases of the \ac{LV-PDN} and form the database of outdoor PLC channel noise.
 
@@ -202,7 +236,7 @@ Figs. \ref{Fig:setupTX} and \ref{Fig:setupRX} illustrate the complex task of ins
 \begin{figure}[!htp]
 	\begin{centering}
 		\includegraphics[scale=.4]{Figuras/setupRXnoposte.eps}
-		\caption{Setup RX installed on the \ac{LV-PDN} pole.}
+		\caption{RX equipment installed on the pole.}
        \label{Fig:setupTX}
      \end{centering}
  \end{figure}
@@ -210,7 +244,7 @@ Figs. \ref{Fig:setupTX} and \ref{Fig:setupRX} illustrate the complex task of ins
 \begin{figure}[!htp]
 	\begin{centering}		
 	\includegraphics[scale=.4]{Figuras/setupTXnoconsumidor.eps}
-	\caption{Setup TX installed near the consumer's electric power meter.}
+	\caption{TX equipment installed near to the consumer's electric power meter.}
 		\label{Fig:setupRX}
 	\end{centering}
 \end{figure}
@@ -218,7 +252,7 @@ Figs. \ref{Fig:setupTX} and \ref{Fig:setupRX} illustrate the complex task of ins
 \section{Features Definitions}
 \label{sec:parameters}
 
-Let us assume that that the PLC channels are modeled as band imited and frequency selective \ac{WSSUS}. Also, assume that during a certain period of time, the channel impulse response is time-invariant. Therefore, the \ac{CIR} of the \ac{PLC} channel is during this certain time interval is  $ h(t)\in \mathbb{R}|t\in[0,T_h)$,  and its corresponding Fourier transform is $H(f)\in \mathbb{C}||f|<B$, in which $B$ is the frequency bandwidth. Note that $h[n]=h(t)|_{t=nT_s}$, in which $n=0,1.2,\cdots,L_h-1 $ and $T_s$ is the sampling period. The features extracted from the Brazilian PLC channels are described in the following subsections. This assumption is taken into account to define \ac{ACA}, \ac{ACFR}, \ac{RMS-DS}, \ac{CT} and \ac{CB}.
+Let us assume that \ac{PLC} channels are modeled as bandlimited and frequency selective \ac{WSSUS}. Also, assume that during a certain period of time, the \ac{CIR} is time-invariant. Therefore, the \ac{CIR} of the \ac{PLC} channel during a certain time interval is $ h(t)\in \mathbb{R}|t\in[0,T_h)$,  and its corresponding Fourier transform is $H(f)\in \mathbb{C}||f|<B$, in which $B$ is the frequency bandwidth occupied by the \ac{PLC} channels. Note that $h[n]=h(t)|_{t=nT_s}$, in which $n=0,1.2,\cdots,L_h-1 $ and $T_s$ is the sampling period. The features extracted from the Brazilian PLC channels are described in the following subsections. This assumption is taken into account to define \ac{ACA}, \ac{ACFR}, \ac{RMS-DS}, \ac{CT} and \ac{CB}.
 
 \subsection{Average Channel Attenuation}
 The ACA in dB is expressed by
@@ -271,10 +305,10 @@ where $0<\gamma<1$ is the correlation level informing that the channel frequency
 B_c=\frac{\Delta \omega_{B_c}}{2\pi}f_s.
 \label{eq:CB}
 \end{eqnarray}
-The CB estimates from the measured hybrid PLC-wireless channels are analyzed with respect to the correlation coefficient $\gamma = 0.9$, following the majority of previous contributions in the field~\cite{REF_28}. 
+The CB estimates from the measured PLC channels are analyzed with respect to the correlation coefficient $\gamma = 0.9$. 
 
 \subsection{Coherence Time}
-The coherence time is the time duration in which the channel impulse response of a PLC channel is considered time invariant. Following~\cite{Picorone2014}, the evaluation of the coherence time may be carried out by assuming that the PLC channel is an wide-sense stationary uncorrelated scattering (WSSUS) process. Then, the coherence time of the channel is related to the coherence time of the complex gains of the channel, $\alpha_l(t)$, which incorporate both attenuation and phase deviations due to $l = 1,2,\ldots,L$ multiple reflections of the signal in the communication medium.  
+The coherence time is the time duration in which the channel impulse response of a PLC channel is considered time invariant. Following~\cite{Picorone2014}, the evaluation of the coherence time may be carried out by assuming that the PLC channel is an \ac{WSSUS} process. Then, the coherence time of the channel is related to the coherence time of the complex gains of the channel, $\alpha_l(t)$, which incorporate both attenuation and phase deviations due to $l = 1,2,\ldots,L$ multiple reflections of the signal in the communication medium.  
 
 In its turn, the coherence index between samples of $\alpha_l(t)$, taken $\Delta t$ time units apart, is given by
 \begin{eqnarray}\label{eq-correlindex}
@@ -289,7 +323,7 @@ where $P_l= E[|\alpha_l^2(t)|]$ is the average power of the  $l^{\rm th}$ path. 
 \begin{eqnarray}\label{eq-correlfinal}
 |\rho_h(T_c^{\beta})|\geq \beta,
 \end{eqnarray}
-where $0 <\beta < 1$ refers to the minimum correlation index admitted to characterize the channel as time-invariant during the time interval $\Delta t =T_c^{\beta}$. By adopting an hermitian symmetric orthogonal frequency division multiplexing (HS-OFDM) scheme, which is the version of the orthogonal frequency division multiplexing (OFDM) scheme for baseband data communication \textbf{ [INCLUIR REFERENCIA DO ARTIGO MEU, COLEN E POOR]}, the CT for the correlation index $\beta$, denoted by $T_{c}^{\beta}$, can be estimated by using~\cite{Picorone2014} 
+where $0 <\beta < 1$ refers to the minimum correlation index admitted to characterize the channel as time-invariant during the time interval $\Delta t =T_c^{\beta}$. By adopting an hermitian symmetric orthogonal frequency division multiplexing (HS-OFDM) scheme, which is the version of the orthogonal frequency division multiplexing (OFDM) scheme for baseband data communication \cite{Ribeiro2014a}, the CT for the correlation index $\beta$, denoted by $T_{c}^{\beta}$, can be estimated by using~\cite{Picorone2014} 
 \begin{eqnarray}
 	T_{c}^{\beta} = M_c(2N+L_{cp})T_s,
 \end{eqnarray}
@@ -418,7 +452,7 @@ where $\sigma_{\tau}$ is the RMS-DS in microseconds.
 The \ac{CB} statistics are indicated in Tab.~\ref{Tab:EstatisticasCB}, where it is observed that in 90\% of the analyzed cases  \ac{CB} is higher than 351.24~kHz.
 \begin{table}[!htb]
 \centering
-\caption{Coherence bandwidth statistics for $\varphi = 0.9$ of outdoor PLC channel in kHz.}
+\caption{Coherence bandwidth statistics for $\gamma = 0.9$ of outdoor PLC channel in kHz.}
 \footnotesize 
 \begin{tabular}{c|c|c|c|c|c|c}
 \hline 
@@ -430,7 +464,7 @@ CB                & 247.20  & 629.21 &  430.57 & 75.00   & 351.24       & 542.74
 \newline
 \end{table} 
 
-The empirical CDF of CB is shown in Fig.~\ref{Fig:BC_CDF}, when  $\varphi = 0.9$ is considered. In this case, CB varies from 247.2~kHz up to 629.2~kHz following, with good approximation, a inverse Gaussian probability distribution ($\mu$ = 430.57, $\lambda$ = 14,323.9).  
+The empirical CDF of CB is shown in Fig.~\ref{Fig:BC_CDF}, when  $\gamma = 0.9$ is considered. In this case, CB varies from 247.2~kHz up to 629.2~kHz following, with good approximation, a inverse Gaussian probability distribution ($\mu$ = 430.57, $\lambda$ = 14,323.9).  
 \begin{figure}[!htp]
 \begin{centering}
     \psfrag{X}[Bc]{CB (kHz)}    
@@ -512,7 +546,7 @@ $\beta$    &  Min    & Max    & Mean    & Std     & 90\% above   & 90\% below \\
 \end{table}  
 
 \subsection{Noise}\label{sec-ruido}
-The $n$-th group of measured noises, $\mathbf{v}_n = [v_n[0] \ v_n[1] \ldots v_n[N_v-1]]^T$, is classified as background noise if $|v_n[l]|<V_{\lim}, \forall l$. On the other hand, $\mathbf{v}_n$ is said to be impulsive noise if $\exists l \ | \ |v_n[l]|\geq V_{\lim}$. In this work was adopted $V_{\lim} = 0.05$ V and  $N_v = 3,500.000$ samples. Fig.~\ref{Fig:limiteDeciRuidos} illustrates the two classes of noise adopted to model the noise of \ac{LV-PDN}. In the Figure above the peak value of the noise amplitude did not exceed the decision threshold $V_{\lim}$, so this group of $N_v$ samples is classified as background noise. In the figure below, it is possible to identify that there are samples from the group where their amplitudes exceed the decision threshold, so the group is classified as impulsive noise. 
+In this work, each measured noise group has $N_v=3,500.000$ samples and it is classified as background noise if all of its samples assume values less than $V_{\lim}$. Otherwise, that is, the measured noise group has some sample with an amplitude greater than or equal to $V_{\lim}$, it receives the classification of impulsive noise. Fig.~\ref{Fig:limiteDeciRuidos} illustrates the two classes of noise adopted to model the noise of \ac{LV-PDN} when $V_{\lim}=0.05$~V. In the Figure above the peak value of the noise amplitude did not exceed the decision threshold $V_{\lim}$, so this group of $N_v$ samples is classified as background noise. In the figure below, it is possible to identify that there are samples from the group where their amplitudes exceed the decision threshold, so the group is classified as impulsive noise. 
 \begin{figure} [!htb]
     \begin{minipage}[b]{\linewidth}
     \psfrag{X}[Bc]{Samples}    
@@ -608,7 +642,7 @@ CT$^{*2}$ [ms]       & 2.07   & $>$16.3  & 6.55     & 3.83    & 2.49          & 
 \end{tabular} \label{Tab:Estatisticas}
 \newline
 \begin{tabular}{ccccc}
-Note 1: $\varphi = 0.9$ &  &Note 2: $\beta=0.98$ & & \\  
+Note 1: $\gamma = 0.9$ &  &Note 2: $\beta=0.98$ & & \\  
 \end{tabular}
 \end{table*}
 
@@ -620,26 +654,9 @@ Concerning the calculation of the coherence band and coherence time, it has been
 
 Statistical models that represent the RMS-DS and CB of the measured channels were presented. Also, the temporal window statistic and average gain variation that occur due to periodic cyclic variations in the frequency response of the \ac{PLC} channel was discussed at the first time.
 
-The PLC signal average attenuation when propagating on the Brazilian \ac{LV-PDN} was estimated at 0.4 dB/m and 0.4 dB/MHz. .
-
 Mathematical models, based on only two parameters, representing the background and impulsive noises present in \ac{LV-PDN} have been proposed.
 
 Finally, the achievable data rate of the outdoor PLC channel in the presence both impulsive and background noise was estimated.
-
-Some of our main conclusions are summarized as follows:
-\begin{itemize}
-	\item The \ac{ACA} increases as the channel length increases, with a linear ratio of 0.4~dB/m for the measured Brazilian outdoor PLC channels;
-	\item The average duration of the time window occupied by the abrupt \ac{ACA} variation of measured outdoor PLC channels is about 0.98~ms, since the observed values ranged from 0.73~ms up to 1.40~ms;
-	\item The mean value of the magnitude response of outdoor PLC channels exhibit a decay rate of, approximately, 0.4~dB/MHz; 
-	\item The \ac{RMS-DS} presents values between 129.7~$\mu$s and 301.6~$\mu$s following, with good approximation, the inverse Gaussian probability distribution; 
-	\item The \ac{RMS-DS} was smaller than $0.22$~ms in 90\% of the analyzed cases;
-	\item The \ac{CB} varies from 247.2~kHz up to 629.2~kHz following, with good approximation, a inverse Gaussian probability distribution;
-	\item The \ac{CB} is higher than 351.24~kHz in 90\% of the analyzed cases when  $\varphi = 0.9$ is considered;
-	\item The relationship between \ac{RMS-DS} and \ac{CB} in outdoor \ac{PLC} channel can be modeled by a hyperbolic curve;
-	\item Only in 20\% of the analyzed cases the \ac{CT} was less than, approximately, 2~ms for $\beta = 0.99$ and 5~ms for $\beta = 0.95$; 
-	\item The \ac{CT} was not lower than 1.38~ms and 5.76~ms, for $\beta=0.99$ and $\beta = 0.90$, respectively.
-\end{itemize}
-
 \section*{Acknowledgment}
 
 The authors would like to thank, FINEP, FAPEMIG, CNPq, CAPES, P\&D
